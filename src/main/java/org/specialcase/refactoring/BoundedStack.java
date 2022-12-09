@@ -37,15 +37,21 @@ public class BoundedStack implements Stack {
     public static Stack make(int capacity) {
         if (capacity < 0)
             throw new IllegalCapacity();
+
+        if(capacity == 0)
+            return new ZeroCapacityStack();
+
+
         return new BoundedStack(capacity);
     }
 
-    public class Overflow extends RuntimeException {
+    public static class Overflow extends RuntimeException {
     }
 
     public static class IllegalCapacity extends RuntimeException {
     }
 
-    public class Underflow extends RuntimeException {
+    public static class Underflow extends RuntimeException {
     }
+
 }
